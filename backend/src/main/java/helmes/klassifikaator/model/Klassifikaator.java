@@ -26,7 +26,7 @@ import java.util.List;
 @DynamicUpdate
 @Getter
 @Setter
-//@EqualsAndHashCode(of = {"id"}, callSuper = false)
+@EqualsAndHashCode(of = {"id"}, callSuper = false)
 public class Klassifikaator extends BaseModel {
 
     @Id

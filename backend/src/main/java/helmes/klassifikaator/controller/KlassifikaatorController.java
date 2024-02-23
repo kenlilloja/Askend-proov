@@ -2,7 +2,7 @@ package helmes.klassifikaator.controller;
 
 import helmes.klassifikaator.dto.KlassifikaatorDto;
 import helmes.klassifikaator.service.KlassifikaatorService;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "/api/v1/klassifikaator")
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class KlassifikaatorController {
 
     private final KlassifikaatorService service;

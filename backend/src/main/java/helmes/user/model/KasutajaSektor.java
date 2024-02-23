@@ -23,7 +23,7 @@ import org.hibernate.annotations.DynamicUpdate;
 @DynamicUpdate
 @Getter
 @Setter
-//@EqualsAndHashCode(of = {"id"}, callSuper = false)
+@EqualsAndHashCode(of = {"id"}, callSuper = false)
 public class KasutajaSektor extends BaseModel {
 
     @Id

@@ -3,13 +3,13 @@ package helmes.klassifikaator.service;
 import helmes.klassifikaator.dto.KlassifikaatorDto;
 import helmes.klassifikaator.mapper.KlassifikaatorMapper;
 import helmes.klassifikaator.repository.KlassifikaatorRepository;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class KlassifikaatorService {
 
     private final KlassifikaatorRepository klassifikaatorRepository;

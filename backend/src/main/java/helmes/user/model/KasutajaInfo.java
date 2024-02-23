@@ -25,7 +25,7 @@ import java.util.Set;
 @DynamicUpdate
 @Getter
 @Setter
-//@EqualsAndHashCode(of = {"id"}, callSuper = false)
+@EqualsAndHashCode(of = {"id"}, callSuper = false)
 public class KasutajaInfo extends BaseModel {
 
     @Id
