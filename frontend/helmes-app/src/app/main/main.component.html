@@ -1,0 +1,71 @@
+<form class="container mt-2 mb-2">
+  <div class="form-group mb-4 mt-3">
+    <h3>Proovitöö</h3>
+
+    <div class="col-sm-4">
+      <label class="form-label required">Nimi</label>
+      <input type="text" class="form-control" [(ngModel)]="user.nimi" name="nimi" [maxlength]="100">
+    </div>
+
+    <div *ngIf="valdationErrors && valdationErrors.length">
+      <div *ngFor="let error of valdationErrors">
+        <div *ngIf="error.field === 'nimi'" class="text-danger">{{ error.code }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group mb-4">
+      <div class="col-sm-4">
+            <label class="form-label required">Sektor</label>
+      </div>
+      <div class="col-sm-5">
+          <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="example-tree scrollable-container">
+              <!-- This is the tree node template for leaf nodes -->
+              <mat-tree-node
+                  *matTreeNodeDef="let node"
+                  matTreeNodeToggle
+                  [style.display]="showOnlySelected && !node.selected && hideLeafNode(node) ? 'none' : 'block'">
+                  <li class="mat-tree-node">
+                      <mat-checkbox class="checklist-leaf-node" (change)="itemToggle($event.checked,node)" [checked]="node.selected"
+                      >{{node.label}}</mat-checkbox>
+                  </li>
+              </mat-tree-node>
+              <!-- This is the tree node template for expandable nodes -->
+              <mat-nested-tree-node
+                  *matTreeNodeDef="let node; when: hasChild"
+                  [style.display]="(showOnlySelected && !(node.selected || node.indeterminate)) && hideParentNode(node) ? 'none' : 'block'">
+                  <li>
+                      <div class="mat-tree-node">
+                          <button mat-icon-button matTreeNodeToggle
+                                  [attr.aria-label]="'toggle ' + node.name">
+                              <mat-icon class="mat-icon-rtl-mirror">
+                                  {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+                              </mat-icon>
+                          </button>
+                          <mat-checkbox [checked]="node.selected"
+                                        [indeterminate]="node.indeterminate && !node.selected"
+                                        (change)="itemToggle($event.checked,node)">{{node.label}}</mat-checkbox>
+                      </div>
+                      <ul [class.example-tree-invisible]="!treeControl.isExpanded(node)">
+                          <ng-container matTreeNodeOutlet></ng-container>
+                      </ul>
+                  </li>
+              </mat-nested-tree-node>
+          </mat-tree>
+      </div>
+
+      <div *ngIf="valdationErrors && valdationErrors.length">
+      <div *ngFor="let error of valdationErrors">
+        <div *ngIf="error.field === 'sektorid'" class="text-danger">{{ error.code }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-check mb-3">
+
+    <input type="checkbox" class="form-check-input" [(ngModel)]="user.onNousTingimustega" name="nousolekTingimustega">
+    <label class="form-check-label">Olen nõus tingimustega</label>
+
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="!user.onNousTingimustega" (click)="salvestaValjad()">Salvesta</button>
+</form>
