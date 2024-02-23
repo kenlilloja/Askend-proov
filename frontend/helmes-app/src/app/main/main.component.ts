@@ -53,8 +53,10 @@ export class MainComponent implements OnInit {
         this.service.saveUserInfo(this.user).subscribe(
             (response: any) => {
                 if (response) {
-                    this.snackBarNotification.open('Andmete salvestamine õnnestus!', 'Close', {
+                    this.snackBarNotification.open('Andmete salvestamine õnnestus!', 'Sulge', {
                         duration: 2000,
+                        verticalPosition: 'top',
+                        horizontalPosition: 'right'
                     });
                     this.ngOnInit();
                     this.valdationErrors = [];
