@@ -25,8 +25,8 @@ CREATE TABLE klassifikaator (
 
 CREATE TABLE kasutaja_info (
                           id SERIAL PRIMARY KEY,
-                          nimi VARCHAR(255),
-                          on_nous_tingimustega BOOLEAN DEFAULT FALSE,
+                          nimi VARCHAR(255) NOT NULL,
+                          on_nous_tingimustega BOOLEAN NOT NULL DEFAULT FALSE,
                           loomis_aeg timestamp NOT NULL,
                           muutmis_aeg timestamp
 );

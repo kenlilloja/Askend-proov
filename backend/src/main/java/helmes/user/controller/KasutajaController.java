@@ -22,11 +22,6 @@ public class KasutajaController {
         return kasutajaService.saveUserInfo(dto);
     }
 
-    @GetMapping("/create-user")
-    public KasutajaInfoDto createNewUser() {
-        return kasutajaService.createUser();
-    }
-
     @GetMapping("/search")
     public KasutajaInfoDto getUserInfo() {
         return kasutajaService.getUserInfo();

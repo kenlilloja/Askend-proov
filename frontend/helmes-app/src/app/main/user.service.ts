@@ -15,10 +15,6 @@ export class UserService {
     return this.http.get(this.BASE_URL + '/search');
   }
 
-  createNewUser() {
-      return this.http.get(this.BASE_URL + '/create-user');
-  }
-
   saveUserInfo(userInfoDto: KasutajaInfoDto) {
     return this.http.post(this.BASE_URL + '/save', userInfoDto);
   }

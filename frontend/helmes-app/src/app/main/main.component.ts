@@ -87,15 +87,6 @@ export class MainComponent implements OnInit {
             const userData: any = await this.service.getUserData().toPromise();
             if (userData) {
                 this.user = userData;
-            } else {
-                this.service.createNewUser().subscribe(
-                    (user: any) => {
-                        this.user = user;
-                    },
-                    (error: any) => {
-                        console.error('Error creating new user:', error);
-                    }
-                );
             }
         } catch (error) {
             console.error('Error loading user data:', error);

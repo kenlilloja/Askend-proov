@@ -29,12 +29,6 @@ public class KasutajaService {
         return mapper.fromEntityToDto(entity);
     }
 
-    public KasutajaInfoDto createUser() {
-        KasutajaInfo newUser = new KasutajaInfo();
-        newUser = kasutajaRepository.save(newUser);
-        return mapper.fromEntityToDto(newUser);
-    }
-
     public KasutajaInfoDto getUserInfo() {
         List<KasutajaInfo> entities = (List<KasutajaInfo>) kasutajaRepository.findAll();
         if (!entities.isEmpty()) {

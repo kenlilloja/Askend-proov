@@ -29,7 +29,7 @@ public class KlassifikaatorVaartus extends BaseModel {
     @SequenceGenerator(name = "klassifikaator_vaartus_seq_generator", sequenceName = "klassifikaator_vaartus_seq", allocationSize = 1)
     private Long id;
 
-    @Column(name = "kood", length = 100, nullable = false)
+    @Column(name = "kood", length = 100, nullable = false, unique = true)
     private String kood;
 
     @Column(name = "vaartus", length = 100, nullable = false)
