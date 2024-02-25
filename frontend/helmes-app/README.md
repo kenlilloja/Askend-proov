@@ -3,10 +3,13 @@
 
 Make sure you have npm installed.
 
-Run "**npm install**" to install necessary dependencies and also **"ng add @angular/material"**.
+Run "**npm install**" to install necessary dependencies and also **"ng add @angular/material"**
+(otherwise some features will not work).
 
 While installing Angular Material then follow this:
 ![img.png](img.png)
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.0.
 
 ## Development server
