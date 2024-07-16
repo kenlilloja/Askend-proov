@@ -5,69 +5,69 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.2.3</version>
+		<version>3.2.7</version>
 	</parent>
-	<groupId>helmes-proovitoo</groupId>
+	<groupId>askend-proovitoo</groupId>
 	<artifactId>backend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Helmes</name>
-	<description>Helmes backend project</description>
+	<name>Askend</name>
+	<description>Askend backend project</description>
 	<properties>
-		<java.version>17</java.version>
-		<maven.compiler.source>17</maven.compiler.source>
-		<maven.compiler.target>17</maven.compiler.target>
+		<java.version>19</java.version>
+		<maven.compiler.source>19</maven.compiler.source>
+		<maven.compiler.target>19</maven.compiler.target>
 	</properties>
 	<dependencies>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
-            <version>3.2.3</version>
+            <version>3.2.7</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
-            <version>3.2.3</version>
+            <version>3.2.7</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<scope>runtime</scope>
-            <version>42.6.1</version>
+            <version>42.7.3</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
-            <version>3.2.3</version>
+            <version>3.2.7</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-validation</artifactId>
-			<version>3.2.3</version>
+			<version>3.2.7</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<version>1.18.30</version>
+			<version>1.18.32</version>
 			<optional>true</optional>
 		</dependency>
 
 		<dependency>
 			<groupId>org.flywaydb</groupId>
 			<artifactId>flyway-core</artifactId>
-            <version>9.15.2</version>
+            <version>9.22.3</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.mapstruct</groupId>
 			<artifactId>mapstruct</artifactId>
-			<version>1.4.1.Final</version>
+			<version>1.5.5.Final</version>
 		</dependency>
 
 		<dependency>
@@ -92,17 +92,17 @@
                 <artifactId>maven-compiler-plugin</artifactId>
 				<version>3.8.1</version>
                 <configuration>
-					<release>17</release>
+					<release>19</release>
 					<annotationProcessorPaths>
 						<path>
 							<groupId>org.mapstruct</groupId>
 							<artifactId>mapstruct-processor</artifactId>
-							<version>1.4.1.Final</version>
+							<version>1.5.5.Final</version>
 						</path>
 						<path>
 							<groupId>org.projectlombok</groupId>
 							<artifactId>lombok</artifactId>
-							<version>1.18.26</version>
+							<version>1.18.32</version>
 						</path>
 						<path>
 							<groupId>org.projectlombok</groupId>
@@ -131,7 +131,7 @@
 				</executions>
 				<configuration>
 					<driver>org.postgresql.Driver</driver>
-					<url>jdbc:postgresql://localhost:5432/helmes</url>
+					<url>jdbc:postgresql://localhost:5430/askend</url>
 					<user>postgres</user>
 					<password>postgres</password>
 					<baselineOnMigrate>true</baselineOnMigrate>
