@@ -11,8 +11,8 @@ export class HttpService {
     constructor(private http: HttpClient) {}
 
 
-    getUserData() {
-        return this.http.get(this.BASE_URL + '/search');
+    getAllFilters() {
+        return this.http.get(this.BASE_URL + 'filter/filters');
     }
 
     saveFilter(filterDto: FilterDTO) {

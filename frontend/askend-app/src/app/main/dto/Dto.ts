@@ -3,6 +3,7 @@ export interface FilterDTO {
     name: string;
     selectedCriteria: CriteriaDTO;
     criterias: CriteriaDTO[];
+    createdAt: any;
 }
 
 export interface CriteriaDTO {

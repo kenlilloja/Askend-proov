@@ -22,7 +22,8 @@ export class FilterDialogComponent implements OnInit {
             condition: '',
             value: ''
         },
-        criterias: []
+        criterias: [],
+        createdAt: null
     };
 
     constructor(private dialogRef: MatDialogRef<FilterDialogComponent>,

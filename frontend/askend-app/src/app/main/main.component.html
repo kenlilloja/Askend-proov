@@ -6,18 +6,26 @@
     <table class="table table-striped table-hover">
         <thead>
         <tr>
-            <th scope="col">#</th>
+            <th scope="col">ID</th>
             <th scope="col">Name</th>
             <th scope="col">Criteria type</th>
             <th scope="col">Criteria</th>
+            <th scope="col">Value</th>
+            <th scope="col">Created at</th>
         </tr>
         </thead>
         <tbody>
+
         <ng-container *ngFor="let filter of filters">
+            <tr>
+                <td>{{filter.id}}</td>
+                <td>{{filter.name}}</td>
+                <td>{{filter.selectedCriteria.criteriaType.classifierValue.value}}</td>
+                <td>{{filter.selectedCriteria.condition.classifierValue.value}}</td>
+                <td>{{filter.selectedCriteria.value}}</td>
+                <td>{{filter.createdAt}}</td>
+            </tr>
         </ng-container>
-
-
-
 
         </tbody>
     </table>

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {FilterDialogComponent} from "../filter-dialog/filter-dialog.component";
 import {MatDialog} from "@angular/material/dialog";
 import {FilterDTO} from "./dto/Dto";
-import {HttpClient} from "@angular/common/http";
 import {HttpService} from "../http.service";
 
 @Component({
@@ -15,9 +14,10 @@ export class MainComponent implements OnInit {
 
     constructor(
         private dialog: MatDialog,
-        private httpService: HttpService) {}
+        private service: HttpService) {}
 
     ngOnInit(): void {
+        this.getAllFilters();
     }
 
     openAddingModal() {
@@ -25,5 +25,16 @@ export class MainComponent implements OnInit {
             width: '85vh',
             disableClose: true
         });
+    }
+
+    private getAllFilters() {
+        this.service.getAllFilters().subscribe(
+            (filters: any) => {
+                this.filters = filters;
+            },
+            (error) => {
+                console.error('Error saving filter data:', error);
+            }
+        );
     }
 }
