@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { KasutajaInfoDto } from "./dto/Dto";
 
 @Injectable({
   providedIn: 'root'
@@ -14,13 +13,4 @@ export class UserService {
   getUserData() {
     return this.http.get(this.BASE_URL + '/search');
   }
-
-  saveUserInfo(userInfoDto: KasutajaInfoDto) {
-    return this.http.post(this.BASE_URL + '/save', userInfoDto);
-  }
-
-  loadKlassifikaator(domainCode: string) {
-    return this.http.get(`/api/v1/klassifikaator/${domainCode}`);
-  }
-
 }

@@ -8,34 +8,29 @@ import { HttpClientModule } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MainComponent } from "./main/main.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import {
-  CdkNestedTreeNode,
-  CdkTree,
-  CdkTreeNode,
-  CdkTreeNodeDef,
-  CdkTreeNodeOutlet,
-  CdkTreeNodeToggle
-} from "@angular/cdk/tree";
-import {MatIcon} from "@angular/material/icon";
-import {MatIconButton} from "@angular/material/button";
-import {MatSelect, MatSelectTrigger} from "@angular/material/select";
-import {MatCheckbox} from "@angular/material/checkbox";
-import {
-    MatNestedTreeNode,
-    MatTree,
-    MatTreeNode,
-    MatTreeNodeDef,
-    MatTreeNodeOutlet,
-    MatTreeNodeToggle
-} from "@angular/material/tree";
+import {MatButton, MatFabButton, MatIconButton} from "@angular/material/button";
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import {FilterDialogComponent} from "./filter-dialog/filter-dialog.component";
+import {MatDialogActions, MatDialogContent, MatDialogTitle} from "@angular/material/dialog";
+import {MatIcon} from "@angular/material/icon";
+import {MatFormField, MatFormFieldModule, MatHint, MatLabel} from "@angular/material/form-field";
+import {
+    MatDatepicker,
+    MatDatepickerInput,
+    MatDatepickerModule,
+    MatDatepickerToggle
+} from "@angular/material/datepicker";
+import {MatInput, MatInputModule} from "@angular/material/input";
+import {provideNativeDateAdapter} from "@angular/material/core";
+import {MatRadioButton, MatRadioGroup} from "@angular/material/radio";
 
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
     MainComponent,
-    HeaderComponent
+    HeaderComponent,
+    FilterDialogComponent
   ],
     imports: [
         BrowserModule,
@@ -44,26 +39,29 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
         FormsModule,
         ReactiveFormsModule,
         BrowserAnimationsModule,
-        CdkTreeNode,
-        CdkNestedTreeNode,
+        MatFormFieldModule,
+        MatDialogTitle,
+        MatDialogContent,
+        MatDialogActions,
+        MatButton,
         MatIcon,
-        CdkTree,
-        CdkTreeNodeDef,
+        MatInputModule,
+        MatFabButton,
+        MatFormField,
+        MatDatepickerToggle,
+        MatDatepickerModule,
+        MatDatepicker,
+        MatInput,
+        MatHint,
+        MatLabel,
+        MatDatepickerInput,
         MatIconButton,
-        CdkTreeNodeToggle,
-        CdkTreeNodeOutlet,
-        MatSelectTrigger,
-        MatSelect,
-        MatCheckbox,
-        MatTree,
-        MatTreeNode,
-        MatTreeNodeToggle,
-        MatNestedTreeNode,
-        MatTreeNodeDef,
-        MatTreeNodeOutlet,
+        MatRadioButton,
+        MatRadioGroup,
     ],
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    provideNativeDateAdapter()
   ],
   bootstrap: [AppComponent]
 })

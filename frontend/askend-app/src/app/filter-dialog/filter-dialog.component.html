@@ -1,0 +1,77 @@
+<div class="adjustable-modal" [style.height.vh]="50">
+    <h1 mat-dialog-title class="col-sm-2">Filter</h1>
+    <div mat-dialog-content class="dialog-content">
+        <div class="mb-3 row mt-2">
+            <label for="filterName" class="col-sm-2 col-form-label fw-bold">Filter name</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" id="filterName">
+            </div>
+        </div>
+
+        <ng-container *ngFor="let criteria of criterias; let first = first; let index = index;">
+            <div class="mb-3 row">
+                <div class="col-sm-2">
+                    <label class="col-sm-3 col-form-label fw-bold" *ngIf="first">Criteria</label>
+                </div>
+                <div class="col-sm-3 mt-1">
+                    <select class="form-select" aria-label="Default select example" [(ngModel)]="criteria.criteriaType">
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                </div>
+                <div class="col-sm-3 mt-1">
+                    <select class="form-select" aria-label="Default select example" [(ngModel)]="criteria.condition">
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                </div>
+                <div class="col-sm-3 mt-1">
+                    <input *ngIf="false" type="number" class="form-control" min="0" step="1" [(ngModel)]="criteria.value">
+
+                    <mat-form-field appearance="outline" class="full-width" style="height: 60px">
+                        <input matInput [matDatepicker]="dp" readonly [(ngModel)]="criteria.value">
+                        <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+                        <mat-datepicker #dp></mat-datepicker>
+                        <mat-hint>MM/DD/YYYY</mat-hint>
+                    </mat-form-field>
+
+                    <input type="text" *ngIf="false" class="form-control" [(ngModel)]="criteria.value">
+
+                </div>
+                <div class="col-sm-1">
+                    <button mat-icon-button color="warn" (click)="deleteRow(index)">
+                        <mat-icon aria-label="Delete row">delete</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </ng-container>
+
+        <div class="text-center mt-5">
+            <button mat-raised-button color="primary" (click)="addRow()" style="text-transform: uppercase;">Add New Row</button>
+        </div>
+
+        <div class="mb-3 row mt-5">
+            <div class="col-sm-2">
+                <label class="col-form-label fw-bold">Selection</label>
+            </div>
+            <div class="col-sm-10">
+                <mat-radio-group class="radio-group" [(ngModel)]="filter.selectedCriteria">
+                    <ng-container *ngFor="let criteria of criterias; let i = index">
+                        <mat-radio-button [value]="criteria" class="radio-button">
+                            {{ 'Select ' + (i + 1) }}
+                        </mat-radio-button>
+                    </ng-container>
+                </mat-radio-group>
+            </div>
+        </div>
+
+
+    </div>
+    <div mat-dialog-actions class="dialog-actions">
+        <button mat-button color="warn" (click)="onClose()">Close</button>
+        <button mat-button class="save-button" (click)="onSave()">Save</button>
+    </div>
+
+</div>
