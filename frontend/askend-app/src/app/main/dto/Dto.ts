@@ -1,7 +1,6 @@
 export interface FilterDTO {
     id: any;
     name: string;
-    selectedCriteria: CriteriaDTO;
     criterias: CriteriaDTO[];
     createdAt: any;
 }
@@ -11,4 +10,5 @@ export interface CriteriaDTO {
     criteriaType: any;
     condition: any;
     value: string;
+    isSelected: any;
 }

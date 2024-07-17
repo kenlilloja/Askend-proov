@@ -12,6 +12,5 @@ public class FilterDto extends BaseDto {
 
     private Long id;
     private String name;
-    private CriteriaDto selectedCriteria;
     private List<CriteriaDto> criterias;
 }

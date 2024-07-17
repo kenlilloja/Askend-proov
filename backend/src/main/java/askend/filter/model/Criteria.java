@@ -44,6 +44,9 @@ public class Criteria extends BaseModel {
     @JoinColumn(name = "condition", referencedColumnName = "code")
     private Classifier condition;
 
+    @Column(name = "is_selected")
+    private Boolean isSelected = false;
+
     @Column(name = "value")
     private String value;
 }

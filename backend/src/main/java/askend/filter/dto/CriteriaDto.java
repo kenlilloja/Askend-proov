@@ -14,4 +14,5 @@ public class CriteriaDto extends BaseDto {
     private ClassifierDto criteriaType;
     private ClassifierDto condition;
     private String value;
+    private Boolean isSelected;
 }

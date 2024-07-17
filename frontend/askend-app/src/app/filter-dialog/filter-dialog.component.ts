@@ -6,7 +6,7 @@ import {HttpService} from "../http.service";
 @Component({
     selector: 'app-filter-dialog',
     templateUrl: './filter-dialog.component.html',
-    styleUrls: ['./filter-dialog.component.css'] // Make sure this is 'styleUrls' (plural)
+    styleUrls: ['./filter-dialog.component.css']
 })
 export class FilterDialogComponent implements OnInit {
 
@@ -16,12 +16,6 @@ export class FilterDialogComponent implements OnInit {
     filter: FilterDTO = {
         id: null,
         name: '',
-        selectedCriteria: {
-            id: null,
-            criteriaType: '',
-            condition: '',
-            value: ''
-        },
         criterias: [],
         createdAt: null
     };
@@ -61,7 +55,8 @@ export class FilterDialogComponent implements OnInit {
             id: null,
             criteriaType: '',
             condition: '',
-            value: ''
+            value: '',
+            isSelected: false
         };
         this.criterias.push(newCriteria);
     }
@@ -86,5 +81,13 @@ export class FilterDialogComponent implements OnInit {
                 console.error('Error loading comparison data:', error);
             }
         );
+    }
+
+    onCriteriaChange(event: any) {
+        const selectedCriteria = event.value;
+
+        this.criterias.forEach(criteria => {
+            criteria.isSelected = criteria === selectedCriteria;
+        });
     }
 }

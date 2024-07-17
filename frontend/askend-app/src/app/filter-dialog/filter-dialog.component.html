@@ -59,7 +59,7 @@
                 <label class="col-form-label fw-bold">Selection</label>
             </div>
             <div class="col-sm-10">
-                <mat-radio-group class="radio-group" [(ngModel)]="filter.selectedCriteria">
+                <mat-radio-group class="radio-group" (change)="onCriteriaChange($event)">
                     <ng-container *ngFor="let criteria of criterias; let i = index">
                         <mat-radio-button [value]="criteria" class="radio-button">
                             {{ 'Select ' + (i + 1) }}
@@ -67,6 +67,7 @@
                     </ng-container>
                 </mat-radio-group>
             </div>
+
         </div>
 
 

@@ -13,16 +13,17 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-@Transactional
 public class FilterService {
 
     private final FilterRepository filterRepository;
     private final FilterMapper mapper;
 
+    @Transactional
     public List<FilterDto> getAllFilters() {
         return mapper.fromEntityToDto(filterRepository.findAll());
     }
 
+    @Transactional
     public FilterDto saveFilter(FilterDto filterDto) {
         Filter filter = mapper.fromDtoToEntity(filterDto);
 
@@ -30,11 +31,8 @@ public class FilterService {
             criteria.setFilter(filter);
         }
 
-        filter.getSelectedCriteria().setFilter(filter);
-
         filter = filterRepository.save(filter);
 
         return mapper.fromEntityToDto(filter);
     }
-
 }

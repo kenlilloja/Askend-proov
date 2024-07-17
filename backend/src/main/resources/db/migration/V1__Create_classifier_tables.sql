@@ -26,6 +26,7 @@ CREATE TABLE criteria (
                           criteria_type VARCHAR(100) NOT NULL,
                           condition VARCHAR(100) NOT NULL,
                           value TEXT NOT NULL,
+                          is_selected BOOLEAN NOT NULL DEFAULT FALSE,
                           created_at TIMESTAMP NOT NULL,
                           modified_at TIMESTAMP NOT NULL
 );
@@ -34,7 +35,6 @@ CREATE TABLE criteria (
 CREATE TABLE filter (
                         id SERIAL PRIMARY KEY,
                         name VARCHAR(255) NOT NULL,
-                        selected_criteria INTEGER NOT NULL,
                         created_at TIMESTAMP NOT NULL,
                         modified_at TIMESTAMP NOT NULL
 );
@@ -42,7 +42,6 @@ CREATE TABLE filter (
 ALTER TABLE criteria ADD FOREIGN KEY (filter_id) REFERENCES filter(id);
 ALTER TABLE criteria ADD FOREIGN KEY (criteria_type) REFERENCES classifier(code);
 ALTER TABLE criteria ADD FOREIGN KEY (condition) REFERENCES classifier(code);
-ALTER TABLE filter ADD FOREIGN KEY (selected_criteria) REFERENCES criteria(id);
 
 -- Indexes for classifier_value table
 CREATE INDEX idx_classifier_value_code ON classifier_value (code);
@@ -59,4 +58,3 @@ CREATE INDEX idx_criteria_criteria_type ON criteria (criteria_type);
 CREATE INDEX idx_criteria_condition ON criteria (condition);
 
 -- Indexes for filter table
-CREATE INDEX idx_filter_name ON filter (selected_criteria);

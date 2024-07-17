@@ -1,5 +1,6 @@
 package askend.filter.validator;
 
+import askend.filter.dto.CriteriaDto;
 import askend.filter.dto.FilterDto;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
@@ -17,16 +18,16 @@ public class FilterValidator implements Validator {
 
     @Override
     public void validate(Object target, Errors errors) {
-        FilterDto kasutajaInfoDto = (FilterDto) target;
+        FilterDto filter = (FilterDto) target;
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", MANDATORY_MESSAGE);
 
-        if (kasutajaInfoDto.getCriterias() == null || kasutajaInfoDto.getCriterias().isEmpty()) {
+        if (filter.getCriterias() == null || filter.getCriterias().isEmpty()) {
             errors.rejectValue("criterias", MANDATORY_MESSAGE);
         }
 
-        if (kasutajaInfoDto.getSelectedCriteria() == null) {
-            errors.rejectValue("selectedCriteria", MANDATORY_MESSAGE);
+        if (filter.getCriterias().stream().map(CriteriaDto::getIsSelected).findAny().isEmpty()) {
+            errors.rejectValue("selection", MANDATORY_MESSAGE);
         }
     }
 }
