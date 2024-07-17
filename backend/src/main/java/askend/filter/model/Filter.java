@@ -38,7 +38,7 @@ public class Filter extends BaseModel {
     @Column(name = "name")
     private String name;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "selected_criteria")
     private Criteria selectedCriteria;
 

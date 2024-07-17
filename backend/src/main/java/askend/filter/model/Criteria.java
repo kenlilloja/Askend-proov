@@ -36,11 +36,11 @@ public class Criteria extends BaseModel {
     @JoinColumn(name = "filter_id")
     private Filter filter;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "criteria_type", referencedColumnName = "code")
     private Classifier criteriaType;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "condition", referencedColumnName = "code")
     private Classifier condition;
 

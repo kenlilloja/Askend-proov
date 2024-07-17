@@ -8,6 +8,7 @@ import lombok.Setter;
 @Setter
 public class ClassifierValueDto extends BaseDto {
 
+    private Long id;
     private String code;
     private String value;
     private String langCode;

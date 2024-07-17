@@ -10,6 +10,7 @@ import java.util.List;
 @Setter
 public class ClassifierDto extends BaseDto {
 
+    private Long id;
     private String domainCode;
     private String code;
     private String parentCode;

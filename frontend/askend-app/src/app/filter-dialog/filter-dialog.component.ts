@@ -14,8 +14,10 @@ export class FilterDialogComponent implements OnInit {
     criteriaTypes: any;
     criterias: CriteriaDTO[] = [];
     filter: FilterDTO = {
+        id: null,
         name: '',
         selectedCriteria: {
+            id: null,
             criteriaType: '',
             condition: '',
             value: ''
@@ -55,6 +57,7 @@ export class FilterDialogComponent implements OnInit {
 
     addRow() {
         const newCriteria: CriteriaDTO = {
+            id: null,
             criteriaType: '',
             condition: '',
             value: ''

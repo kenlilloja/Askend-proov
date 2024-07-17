@@ -22,7 +22,7 @@ CREATE TABLE classifier (
 
 CREATE TABLE criteria (
                           id SERIAL PRIMARY KEY,
-                          filter_id INTEGER NOT NULL,
+                          filter_id INTEGER,
                           criteria_type VARCHAR(100) NOT NULL,
                           condition VARCHAR(100) NOT NULL,
                           value TEXT NOT NULL,

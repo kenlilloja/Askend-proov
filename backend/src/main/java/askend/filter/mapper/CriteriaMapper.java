@@ -11,8 +11,10 @@ import org.mapstruct.Mapping;
 public abstract class CriteriaMapper implements DtoAndEntityMapper<CriteriaDto, Criteria>,
                                         DtoAndEntityOverwriteMapper<CriteriaDto, Criteria> {
 
+    @Mapping(target = "filter", ignore = true)
     public abstract CriteriaDto fromEntityToDto(Criteria entity);
 
+    @Mapping(target = "filter", ignore = true)
     public abstract Criteria fromDtoToEntity(CriteriaDto dto);
 
 }
