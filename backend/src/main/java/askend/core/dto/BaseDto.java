@@ -13,6 +13,5 @@ import java.util.Date;
 public abstract class BaseDto implements Serializable {
 
     private Date createdAt;
-    private Date lastModifiedAt;
-    private Date deletedAt;
+    private Date modifiedAt;
 }

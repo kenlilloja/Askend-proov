@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FilterDialogComponent} from "../filter-dialog/filter-dialog.component";
 import {MatDialog} from "@angular/material/dialog";
+import {FilterDTO} from "./dto/Dto";
+import {HttpClient} from "@angular/common/http";
+import {HttpService} from "../http.service";
 
 @Component({
     selector: 'app-main',
@@ -8,9 +11,11 @@ import {MatDialog} from "@angular/material/dialog";
     styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
-    filters: [] = [];
+    filters: FilterDTO[] = [];
 
-    constructor(public dialog: MatDialog) {}
+    constructor(
+        private dialog: MatDialog,
+        private httpService: HttpService) {}
 
     ngOnInit(): void {
     }

@@ -19,6 +19,6 @@ public class ClassifierController {
 
     @GetMapping("/{domainCode}")
     public List<ClassifierDto> getAllKlassifikaatoridByDomainCode(@PathVariable String domainCode) {
-        return null; //service.getAllByDomainCodeAndIsYlemKategooria(domainCode);
+        return service.getAllClassifiersByDomainCode(domainCode);
     }
 }

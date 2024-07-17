@@ -29,7 +29,7 @@ public class Criteria extends BaseModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "criteria_seq_generator")
-    @SequenceGenerator(name = "criteria_seq_generator", sequenceName = "criteria_seq", allocationSize = 1)
+    @SequenceGenerator(name = "criteria_seq_generator", sequenceName = "criteria_id_seq", allocationSize = 1)
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)

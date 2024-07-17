@@ -4,7 +4,7 @@
         <div class="mb-3 row mt-2">
             <label for="filterName" class="col-sm-2 col-form-label fw-bold">Filter name</label>
             <div class="col-sm-3">
-                <input type="text" class="form-control" id="filterName">
+                <input type="text" class="form-control" id="filterName" [(ngModel)]="filter.name">
             </div>
         </div>
 
@@ -14,30 +14,32 @@
                     <label class="col-sm-3 col-form-label fw-bold" *ngIf="first">Criteria</label>
                 </div>
                 <div class="col-sm-3 mt-1">
-                    <select class="form-select" aria-label="Default select example" [(ngModel)]="criteria.criteriaType">
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                    <select class="form-select" [(ngModel)]="criteria.criteriaType">
+                        <option *ngFor="let classifier of criteriaTypes" [ngValue]="classifier">
+                            {{ classifier.classifierValue.value }}
+                        </option>
                     </select>
                 </div>
                 <div class="col-sm-3 mt-1">
-                    <select class="form-select" aria-label="Default select example" [(ngModel)]="criteria.condition">
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                    <select class="form-select" [(ngModel)]="criteria.condition">
+                        <ng-container *ngFor="let condition of comparisonTypes">
+                            <option *ngIf="criteria.criteriaType != null && condition.parentCode === criteria.criteriaType.code" [ngValue]="condition">
+                                {{ condition.classifierValue.value }}
+                            </option>
+                        </ng-container>
                     </select>
                 </div>
                 <div class="col-sm-3 mt-1">
-                    <input *ngIf="false" type="number" class="form-control" min="0" step="1" [(ngModel)]="criteria.value">
+                    <input *ngIf="criteria.criteriaType === null || criteria.criteriaType.code == 'CRITERIA_TYPE_AMOUNT'" type="number" class="form-control" min="0" step="1" [(ngModel)]="criteria.value">
 
-                    <mat-form-field appearance="outline" class="full-width" style="height: 60px">
+                    <mat-form-field *ngIf="criteria.criteriaType != null && criteria.criteriaType.code == 'CRITERIA_TYPE_DATE'" appearance="outline" class="full-width" style="height: 60px">
                         <input matInput [matDatepicker]="dp" readonly [(ngModel)]="criteria.value">
                         <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
                         <mat-datepicker #dp></mat-datepicker>
                         <mat-hint>MM/DD/YYYY</mat-hint>
                     </mat-form-field>
 
-                    <input type="text" *ngIf="false" class="form-control" [(ngModel)]="criteria.value">
+                    <input type="text" *ngIf="criteria.criteriaType != null && criteria.criteriaType.code == 'CRITERIA_TYPE_TITLE'" class="form-control" [(ngModel)]="criteria.value">
 
                 </div>
                 <div class="col-sm-1">

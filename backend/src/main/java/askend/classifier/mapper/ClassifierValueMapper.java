@@ -8,7 +8,7 @@ import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring",
         disableSubMappingMethodsGeneration = true)
-public interface ClassifierValueMapper extends DtoAndEntityMapper<ClassifierValueDto, ClassifierValue>,
+public abstract class ClassifierValueMapper implements DtoAndEntityMapper<ClassifierValueDto, ClassifierValue>,
                                                DtoAndEntityOverwriteMapper<ClassifierValueDto, ClassifierValue> {
 
 }

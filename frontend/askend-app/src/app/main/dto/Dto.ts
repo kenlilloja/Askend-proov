@@ -5,7 +5,7 @@ export interface FilterDTO {
 }
 
 export interface CriteriaDTO {
-    criteriaType: string;
-    condition: string;
+    criteriaType: any;
+    condition: any;
     value: string;
 }

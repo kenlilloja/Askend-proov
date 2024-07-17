@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface ClassifierRepository extends BaseRepository<Classifier, Long> {
 
+    List<Classifier> getAllByDomainCode(String domainCode);
+
 }

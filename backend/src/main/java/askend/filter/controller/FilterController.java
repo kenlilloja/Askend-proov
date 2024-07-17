@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(path = "/api/v1/filter")
 @RequiredArgsConstructor
@@ -19,11 +21,11 @@ public class FilterController {
 
     @PostMapping("/save")
     public FilterDto saveUserInfo(@RequestBody @Valid FilterDto dto) {
-        return null; //filterService.saveUserInfo(dto);
+        return filterService.saveFilter(dto);
     }
 
-    @GetMapping("/search")
-    public FilterDto getUserInfo() {
-        return null; //filterService.getUserInfo();
+    @GetMapping("/filters")
+    public List<FilterDto> getFilters() {
+        return filterService.getAllFilters();
     }
 }

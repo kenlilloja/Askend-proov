@@ -32,7 +32,7 @@ public class Filter extends BaseModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "filter_seq_generator")
-    @SequenceGenerator(name = "filter_seq_generator", sequenceName = "filter_seq", allocationSize = 1)
+    @SequenceGenerator(name = "filter_seq_generator", sequenceName = "filter_id_seq", allocationSize = 1)
     private Long id;
 
     @Column(name = "name")

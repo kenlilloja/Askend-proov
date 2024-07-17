@@ -31,7 +31,7 @@ public class Classifier extends BaseModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "classifier_seq_generator")
-    @SequenceGenerator(name = "classifier_seq_generator", sequenceName = "classifier_seq", allocationSize = 1)
+    @SequenceGenerator(name = "classifier_seq_generator", sequenceName = "classifier_id_seq", allocationSize = 1)
     private Long id;
 
     @Column(name = "domain_code", length = 100, nullable = false)
