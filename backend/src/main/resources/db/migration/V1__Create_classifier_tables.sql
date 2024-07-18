@@ -56,5 +56,3 @@ CREATE INDEX idx_classifier_parent_code ON classifier (parent_code);
 CREATE INDEX idx_criteria_filter_id ON criteria (filter_id);
 CREATE INDEX idx_criteria_criteria_type ON criteria (criteria_type);
 CREATE INDEX idx_criteria_condition ON criteria (condition);
-
--- Indexes for filter table

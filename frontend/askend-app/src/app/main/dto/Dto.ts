@@ -9,6 +9,6 @@ export interface CriteriaDTO {
     id: any;
     criteriaType: any;
     condition: any;
-    value: string;
+    value: any;
     isSelected: any;
 }

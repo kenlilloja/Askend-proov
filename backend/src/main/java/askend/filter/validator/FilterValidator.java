@@ -22,7 +22,8 @@ public class FilterValidator implements Validator {
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", MANDATORY_MESSAGE);
 
-        if (filter.getCriterias() == null || filter.getCriterias().isEmpty()) {
+        if (filter.getCriterias() == null || filter.getCriterias().isEmpty() ||
+                filter.getCriterias().stream().anyMatch(x -> x.getCriteriaType() == null || x.getCondition() == null || x.getValue() == null)) {
             errors.rejectValue("criterias", MANDATORY_MESSAGE);
         }
 

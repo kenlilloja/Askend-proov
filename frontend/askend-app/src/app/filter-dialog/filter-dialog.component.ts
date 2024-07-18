@@ -19,15 +19,16 @@ export class FilterDialogComponent implements OnInit {
         criterias: [],
         createdAt: null
     };
+    defaultCriteriaType: any;
 
     constructor(private dialogRef: MatDialogRef<FilterDialogComponent>,
                 private service: HttpService) {
     }
 
-    ngOnInit(): void {
-        this.addRow();
-        this.loadCriteriaTypes();
-        this.loadComparisonTypes();
+    async ngOnInit(): Promise<void> {
+        await this.loadCriteriaTypes();
+        await this.loadComparisonTypes();
+        await this.addRow();
     }
 
     onClose(): void {
@@ -50,37 +51,46 @@ export class FilterDialogComponent implements OnInit {
         this.criterias.splice(index, 1);
     }
 
-    addRow() {
+    async addRow() {
         const newCriteria: CriteriaDTO = {
             id: null,
-            criteriaType: '',
-            condition: '',
-            value: '',
+            criteriaType: this.defaultCriteriaType,
+            condition: null,
+            value: null,
             isSelected: false
         };
         this.criterias.push(newCriteria);
     }
 
-    private loadCriteriaTypes() {
-        this.service.loadClassifiers('CRITERIA_TYPE').subscribe(
-            (types) => {
-                this.criteriaTypes = types;
-            },
-            (error) => {
-                console.error('Error loading criteria data:', error);
-            }
-        );
+    private loadCriteriaTypes(): Promise<void> {
+        return new Promise((resolve, reject) => {
+            this.service.loadClassifiers('CRITERIA_TYPE').subscribe(
+                (types) => {
+                    this.criteriaTypes = types;
+                    this.defaultCriteriaType = this.criteriaTypes.find((x: { code: string; }) => x.code === 'CRITERIA_TYPE_AMOUNT');
+                    resolve();
+                },
+                (error) => {
+                    console.error('Error loading criteria data:', error);
+                    reject(error);
+                }
+            );
+        });
     }
 
-    private loadComparisonTypes() {
-        this.service.loadClassifiers('CRITERIA_COMPARISON').subscribe(
-            (compTypes) => {
-                this.comparisonTypes = compTypes
-            },
-            (error) => {
-                console.error('Error loading comparison data:', error);
-            }
-        );
+    private loadComparisonTypes(): Promise<void> {
+        return new Promise((resolve, reject) => {
+            this.service.loadClassifiers('CRITERIA_COMPARISON').subscribe(
+                (compTypes) => {
+                    this.comparisonTypes = compTypes;
+                    resolve();
+                },
+                (error) => {
+                    console.error('Error loading comparison data:', error);
+                    reject(error);
+                }
+            );
+        });
     }
 
     onCriteriaChange(event: any) {
