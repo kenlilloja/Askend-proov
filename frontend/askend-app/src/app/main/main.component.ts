@@ -37,8 +37,4 @@ export class MainComponent implements OnInit {
             }
         );
     }
-
-    getUsedCriteria(filter: any) {
-        return filter.criterias.find((x: { isSelected: boolean; }) => x.isSelected);
-    }
 }

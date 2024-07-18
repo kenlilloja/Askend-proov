@@ -23,6 +23,9 @@ import {
 import {MatInput, MatInputModule} from "@angular/material/input";
 import {provideNativeDateAdapter} from "@angular/material/core";
 import {MatRadioButton, MatRadioGroup} from "@angular/material/radio";
+import {
+   MatExpansionModule
+} from "@angular/material/expansion";
 
 @NgModule({
   declarations: [
@@ -58,6 +61,7 @@ import {MatRadioButton, MatRadioGroup} from "@angular/material/radio";
         MatIconButton,
         MatRadioButton,
         MatRadioGroup,
+        MatExpansionModule,
     ],
   providers: [
     provideAnimationsAsync(),

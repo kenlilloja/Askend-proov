@@ -27,8 +27,8 @@ public class FilterValidator implements Validator {
             errors.rejectValue("criterias", MANDATORY_MESSAGE);
         }
 
-        if (filter.getCriterias().stream().map(CriteriaDto::getIsSelected).findAny().isEmpty()) {
-            errors.rejectValue("selection", MANDATORY_MESSAGE);
+        if (filter.getCriterias().stream().noneMatch(CriteriaDto::getIsSelected)) {
+            errors.rejectValue("isSelected", MANDATORY_MESSAGE);
         }
     }
 }

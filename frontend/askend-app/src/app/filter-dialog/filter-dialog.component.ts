@@ -20,6 +20,7 @@ export class FilterDialogComponent implements OnInit {
         createdAt: null
     };
     defaultCriteriaType: any;
+    valdationErrors: any[] = [];
 
     constructor(private dialogRef: MatDialogRef<FilterDialogComponent>,
                 private service: HttpService) {
@@ -42,6 +43,7 @@ export class FilterDialogComponent implements OnInit {
                 this.dialogRef.close();
             },
             (error) => {
+                this.valdationErrors = error.error.errors;
                 console.error('Error saving filter data:', error);
             }
         );
