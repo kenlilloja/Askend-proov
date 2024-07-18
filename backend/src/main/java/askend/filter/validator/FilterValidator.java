@@ -4,9 +4,11 @@ import askend.filter.dto.CriteriaDto;
 import askend.filter.dto.FilterDto;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
+import org.springframework.validation.FieldError;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
+import static askend.core.validation.ValidatorMessage.AT_LEAST_ONE_CRITERIA;
 import static askend.core.validation.ValidatorMessage.MANDATORY_MESSAGE;
 
 @Component
@@ -28,7 +30,7 @@ public class FilterValidator implements Validator {
         }
 
         if (filter.getCriterias().stream().noneMatch(CriteriaDto::getIsSelected)) {
-            errors.rejectValue("isSelected", MANDATORY_MESSAGE);
+            errors.rejectValue("criterias", AT_LEAST_ONE_CRITERIA);
         }
     }
 }

@@ -1,15 +1,22 @@
 <div class="adjustable-modal" [style.height.vh]="50">
     <h1 mat-dialog-title class="col-sm-2" style="background-color: rgb(245 238 238 / 87%);">Filter</h1>
     <div mat-dialog-content class="dialog-content">
+        <div *ngIf="valdationErrors && valdationErrors.length">
+            <div *ngFor="let error of valdationErrors">
+                <div *ngIf="error.field === 'name'" class="text-danger">{{ error.code }}</div>
+            </div>
+        </div>
+
         <div class="mb-3 row mt-2">
             <label for="filterName" class="col-sm-2 col-form-label fw-bold required">Filter name</label>
             <div class="col-sm-3">
                 <input type="text" class="form-control" id="filterName" [(ngModel)]="filter.name">
             </div>
         </div>
+
         <div *ngIf="valdationErrors && valdationErrors.length">
             <div *ngFor="let error of valdationErrors">
-                <div *ngIf="error.field === 'name'" class="text-danger">{{ error.code }}</div>
+                <div *ngIf="error.field === 'criterias'" class="text-danger">{{ error.code }}</div>
             </div>
         </div>
 
@@ -56,12 +63,6 @@
             </div>
         </ng-container>
 
-        <div *ngIf="valdationErrors && valdationErrors.length">
-            <div *ngFor="let error of valdationErrors">
-                <div *ngIf="error.field === 'criterias'" class="text-danger">{{ error.code }}</div>
-            </div>
-        </div>
-
         <div class="text-center mt-5">
             <button mat-raised-button color="primary" (click)="addRow()" style="text-transform: uppercase;">Add New Row</button>
         </div>
@@ -80,13 +81,6 @@
                 </mat-radio-group>
             </div>
         </div>
-
-        <div *ngIf="valdationErrors && valdationErrors.length">
-            <div *ngFor="let error of valdationErrors">
-                <div *ngIf="error.field === 'isSelected'" class="text-danger">{{ error.code }}</div>
-            </div>
-        </div>
-
 
     </div>
     <div mat-dialog-actions class="dialog-actions">

@@ -25,6 +25,10 @@ export class MainComponent implements OnInit {
             width: '85vh',
             disableClose: true
         });
+
+        dialogRef.afterClosed().subscribe(() => {
+            this.getAllFilters();
+        });
     }
 
     private getAllFilters() {
