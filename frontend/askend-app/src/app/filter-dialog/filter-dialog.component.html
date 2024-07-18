@@ -34,6 +34,7 @@
                 </div>
                 <div class="col-sm-3 mt-1">
                     <select class="form-select" [(ngModel)]="criteria.condition">
+                        <option [ngValue]="null" *ngIf="!criteria.condition">Select Condition</option>
                         <ng-container *ngFor="let condition of comparisonTypes">
                             <option *ngIf="criteria.criteriaType != null && condition.parentCode === criteria.criteriaType.code" [ngValue]="condition">
                                 {{ condition.classifierValue.value }}
