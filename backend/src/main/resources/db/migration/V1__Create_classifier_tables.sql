@@ -15,7 +15,7 @@ CREATE TABLE classifier (
                             parent_code VARCHAR(100),
                             created_at TIMESTAMP NOT NULL,
                             modified_at TIMESTAMP NOT NULL,
-                            FOREIGN KEY (parent_code) REFERENCES classifier(code),
+                            FOREIGN KEY (parent_code) REFERENCES classifier(code) ON DELETE CASCADE,
                             FOREIGN KEY (code) REFERENCES classifier_value(code)
 );
 
@@ -39,9 +39,9 @@ CREATE TABLE filter (
                         modified_at TIMESTAMP NOT NULL
 );
 
-ALTER TABLE criteria ADD FOREIGN KEY (filter_id) REFERENCES filter(id);
-ALTER TABLE criteria ADD FOREIGN KEY (criteria_type) REFERENCES classifier(code);
-ALTER TABLE criteria ADD FOREIGN KEY (condition) REFERENCES classifier(code);
+ALTER TABLE criteria ADD FOREIGN KEY (filter_id) REFERENCES filter(id) ON DELETE CASCADE;
+ALTER TABLE criteria ADD FOREIGN KEY (criteria_type) REFERENCES classifier(code) ON DELETE CASCADE;
+ALTER TABLE criteria ADD FOREIGN KEY (condition) REFERENCES classifier(code) ON DELETE CASCADE;
 
 -- Indexes for classifier_value table
 CREATE INDEX idx_classifier_value_code ON classifier_value (code);
