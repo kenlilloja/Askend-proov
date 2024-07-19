@@ -34,7 +34,4 @@ public class ClassifierValue extends BaseModel {
 
     @Column(name = "value", length = 100, nullable = false)
     private String value;
-
-    @Column(name = "lang_code", length = 100, nullable = false)
-    private String langCode;
 }

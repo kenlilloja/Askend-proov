@@ -2,7 +2,6 @@ CREATE TABLE classifier_value (
                                   id SERIAL PRIMARY KEY,
                                   code VARCHAR(100) NOT NULL UNIQUE,
                                   value VARCHAR(100) NOT NULL,
-                                  lang_code VARCHAR(100) NOT NULL,
                                   created_at TIMESTAMP NOT NULL,
                                   modified_at TIMESTAMP NOT NULL
 );
@@ -45,7 +44,6 @@ ALTER TABLE criteria ADD FOREIGN KEY (condition) REFERENCES classifier(code) ON 
 
 -- Indexes for classifier_value table
 CREATE INDEX idx_classifier_value_code ON classifier_value (code);
-CREATE INDEX idx_classifier_value_lang_code ON classifier_value (lang_code);
 
 -- Indexes for classifier table
 CREATE INDEX idx_classifier_domain_code ON classifier (domain_code);

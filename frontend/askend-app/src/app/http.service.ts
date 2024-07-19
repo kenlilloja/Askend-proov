@@ -16,7 +16,6 @@ export class HttpService {
     }
 
     saveFilter(filterDto: FilterDTO) {
-        console.log(filterDto);
         return this.http.post(this.BASE_URL + 'filter/save', filterDto);
     }
 
